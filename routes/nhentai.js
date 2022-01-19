@@ -40,7 +40,7 @@ router.get("/random", async (req, res) => {
   nhentai
     .getRandomBook()
     .then((id) => id.id)
-    .then((id) => res.send(id));
+    .then((id) => res.send(`${id}`));
 });
 router.get("/search", (req, res) => {
   nhentai.search(req.query.query, Number(req.query.page)).then((search) => {
