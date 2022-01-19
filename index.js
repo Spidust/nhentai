@@ -4,7 +4,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000 
 const nhentaiRoute = require('./routes/nhentai')
+// const authRoute = require('./routes/auth')
 
+//plugin
 app.use(cors({
     origin: "*",
     methods: "*"
@@ -13,7 +15,10 @@ app.use(bodyParser({
     extended: true
 }))
 
+//route
 app.use('/nhentai', nhentaiRoute)
+
+// app.use('/auth', authRoute)
 
 app.use('/', (req, res) => res.send('hello world'))
 
