@@ -1,0 +1,27 @@
+{
+  "name": "nhentai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spidust/nhentai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spidust/nhentai/issues"
+  },
+  "homepage": "https://github.com/Spidust/nhentai#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "nhentai-api": "^3.4.3",
+    "nodemon": "^2.0.15"
+  }
+}
