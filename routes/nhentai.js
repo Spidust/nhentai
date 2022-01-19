@@ -5,7 +5,7 @@ const router = express.Router();
 
 const bookHandler = (book) => {
   const title = book.title;
-  const pages = book.pages.map((page) => nhentai.getImageURL(page));
+  const pages = book.pages.map((page) => "https://t.dogehls.xyz" + nhentai.getImageURL(page).slice(21));
   const artist = book.artists.toNames().join(", ");
   const result = {
     title,
@@ -17,18 +17,17 @@ const bookHandler = (book) => {
 const searchBookHandler = (book) => {
   const id = book.id;
   const title = book.title;
-  let langs = book.languages;
-  langs = langs.map((lang) => lang.name);
+  let lang = book.languages.toNames().join(", ");
   let tags = book.tags;
   tags = tags.filter(
     (tag) => tag.type.type != "artist" && tag.type.type != "language"
   );
   tags = tags.map((tag) => tag.name);
-  const thumb = nhentai.getImageURL(book.cover);
+  const thumb = "https://t.dogehls.xyz" + nhentai.getImageURL(book.cover).slice(21);
   const artist = book.artists.toNames().join(", ");
   const result = {
     title,
-    langs,
+    lang,
     tags,
     thumb,
     artist,
