@@ -20,6 +20,4 @@ app.use('/nhentai', nhentaiRoute)
 
 // app.use('/auth', authRoute)
 
-app.use('/', (req, res) => res.send('hello world'))
-
 app.listen(port, () => console.log("app is running at port " + port))
