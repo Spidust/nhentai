@@ -23,7 +23,7 @@ const searchBookHandler = (book) => {
     (tag) => tag.type.type != "artist" && tag.type.type != "language"
   );
   tags = tags.map((tag) => tag.name);
-  const thumb = "https://t.dogehls.xyz" + nhentai.getImageURL(book.cover).slice(21);
+  const thumb = "https://t.dogehls.xyz" + nhentai.getImageURL(book.pages[0]).slice(21);
   const artist = book.artists.toNames().join(", ");
   const result = {
     title,
@@ -33,6 +33,7 @@ const searchBookHandler = (book) => {
     artist,
     id,
   };
+  //"https://t.dogehls.xyz" + nhentai.getImageURL(book.cover).slice(21);
   return result;
 };
 router.get("/random", async (req, res) => {
@@ -42,7 +43,8 @@ router.get("/random", async (req, res) => {
     .then((id) => res.send(`${id}`));
 });
 router.get("/search", (req, res) => {
-  nhentai.search(req.query.query, Number(req.query.page)).then((search) => {
+  req.query.query = req.query.query.split(' ').join('+')
+  nhentai.search(`${req.query.query}`, Number(req.query.page)).then((search) => {
     let books = search.books.map((book) => searchBookHandler(book));
     let result = {
       maxPage: search.pages,
